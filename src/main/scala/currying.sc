@@ -26,6 +26,14 @@ object exercise {
   def fact(n: Int) = product(x => x)(1,n)
   fact(5)
 
+  def mapReduce(f: Int => Int, combine: (Int, Int) => Int, zeroVal: Int)(a: Int, b: Int): Int =
+    if (a > b) zeroVal
+    else combine(f(a), mapReduce(f, combine, zeroVal)(a+1, b))
+
+  def productMR(f: Int => Int)(a: Int, b: Int):Int = mapReduce(f, (x,y) => x * y, 1)(a,b)
+  productMR(x => x * x)(3,4)
+
+  
 }
 
 
