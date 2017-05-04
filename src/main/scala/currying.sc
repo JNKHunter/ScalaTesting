@@ -5,3 +5,7 @@ def sum(f: Int => Int): (Int, Int) => Int = {
   sumF
 }
 
+def sumInts = sum(x => x)
+def sumCubes = sum(x => x * x * x)
+
+sumInts(1,3)
